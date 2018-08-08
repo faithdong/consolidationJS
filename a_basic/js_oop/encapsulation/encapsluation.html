@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>封装</title>
+</head>
+
+<body>
+	<h1>JavaScript 封装</h1>
+	<p></p>
+	<script>
+		function Cat(name,color){
+			this.name=name;
+			this.color=color;
+		}
+		Cat.prototype.type = '猫科动物';
+		Cat.prototype.eat = function(){
+			console.log("吃老鼠");
+		};
+	　var cat1 = new Cat("大毛","黄色");
+		var cat2 = new Cat("二毛","黑色");
+		console.log(cat1.type);
+		console.log(cat1.type);
+		cat1.eat();
+		for(var prop in cat1) { 
+			console.log(cat1[prop]); 
+			}
+	</script>
+</body>
+
+</html>
