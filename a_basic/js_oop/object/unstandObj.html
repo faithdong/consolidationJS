@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>理解对象</title>
+	<style>
+		.box {
+			display: -webkit-flex;
+			/* Safari */
+			flex-direction: column;
+			flex-wrap: nowrap;
+		}
+
+		ul {
+			display: flex;
+			flex-wrap: wrap;
+		}
+	</style>
+</head>
+
+<body>
+	<h3>数据属性</h3>
+	<div>
+		<ul>
+			<li>1、Configurable
+				<figure>
+					<strong>作用：
+						<p>①：能否通过delete删除属性从而重新定义属性；</p>
+						<p>②：能否修改属性特征;</p>
+						<p>③：能否把属性修改为访问器属性。</p>
+					</strong>
+				</figure>
+				<figure>
+					<strong>使用：（Boolean类型）
+						<p>默认值：直接在对象上定义就为 true</p>
+					</strong>
+				</figure>
+			</li>
+			<li>2、Enumerable
+				<figure>
+					<strong>作用：
+						<p>①：能否通过for-in返回属性；</p>
+					</strong>
+				</figure>
+				<figure>
+					<strong>使用：（Boolean类型）
+						<p>默认值：true</p>
+					</strong>
+				</figure>
+			</li>
+			<li>3、Writable
+				<figure>
+					<strong>作用：
+						<p>①：能否修改属性值；</p>
+					</strong>
+				</figure>
+				<figure>
+					<strong>使用：（Boolean类型）
+						<p>默认值：true</p>
+					</strong>
+				</figure>
+			</li>
+			<li>4、Value
+				<figure>
+					<strong>作用：
+						<p>①：读取属性属性值；</p>
+						<p>②：写入属性值;</p>
+					</strong>
+				</figure>
+				<figure>
+					<strong>使用：（undefined）
+						<p>默认值：undefined</p>
+					</strong>
+				</figure>
+			</li>
+		</ul>
+	</div>
+	<h3>访问器属性</h3>
+	<div>
+		<ul>
+			<li>1、Configurable
+				<figure>
+					<strong>作用：
+						<p>①：能否通过delete删除属性从而重新定义属性；</p>
+						<p>②：能否修改属性特征;</p>
+						<p>③：能否把属性修改为访问器属性。</p>
+					</strong>
+				</figure>
+				<figure>
+					<strong>使用：（Boolean类型）
+						<p>默认值：true</p>
+					</strong>
+				</figure>
+			</li>
+			<li>2、Enumerable
+				<figure>
+					<strong>作用：
+						<p>①：能否通过for-in返回属性；</p>
+					</strong>
+				</figure>
+				<figure>
+					<strong>使用：（Boolean类型）
+						<p>默认值：true</p>
+					</strong>
+				</figure>
+			</li>
+			<li>3、Get
+				<figure>
+					<strong>作用：
+						<p>①：读取属性时调用该函数；</p>
+					</strong>
+				</figure>
+				<figure>
+					<strong>使用：（ function ）
+						<p>默认值：undefined</p>
+					</strong>
+				</figure>
+			</li>
+			<li>4、Set
+				<figure>
+					<strong>作用：
+						<p>①：写入属性时调用该函数；</p>
+					</strong>
+				</figure>
+				<figure>
+					<strong>使用：（ function ）
+						<p>默认值：undefined</p>
+					</strong>
+				</figure>
+			</li>
+		</ul>
+		<h3>使用 ES5 定义多个属性：</h3>
+		<figure>
+			<strong>Object.defineProperties() 函数</strong>
+		</figure>
+		<h3>修改 数据属性 / 访问器属性：</h3>
+		<ul>
+			<li>使用ES5中的：Object.defineProperty() 方法
+				<figure>
+					<strong>该函数接受3个参数：①、属性所在的对象; ②、属性名称; ③、一个描述符对象</strong>
+				</figure>
+				<fieldset>
+					<button onclick="mdyA()">数据属性==演示不能写入数据</button>
+					<button onclick="mdyA()">数据属性==演示不能删除数据</button>
+				</fieldset>
+				<fieldset>
+					<button onclick="mdyC()">访问器属性==演示设置一个值改变其他值变化</button>
+					<button onclick="mdyD()">访问器属性==演示ES5以前的旧方法</button>
+				</fieldset>
+			</li>
+		</ul>
+		<h3>读取 属性的特征</h3>
+		<ul>
+			<li>
+				<strong>Object.getOwnPropertyDescirptor() 函数</strong>
+				<figure>
+					<strong>该函数接受2个参数：①、属性所在的对象; ②、属性名称;</strong>
+				</figure>
+				<fieldset>
+					<p>如果是数据属性：这个对象的属性有 Configurable,Enumerable,writable,value;</p>
+					<p>如果是访问器属性：这个对象的属性所有 Configuable,Enumerable,Get,Set；</p>
+				</fieldset>
+				<fieldset>
+						<button onclick="mdyE()">读取数据属性</button>
+						<button onclick="mdyF()">读取访问器属性</button>
+					</fieldset>
+			</li>
+		</ul>
+	</div>
+	<script>
+		function mdyA() {
+			var person = {};
+			Object.defineProperty(person, 'name', {
+				writable: false,
+				value: 'xiaoli'
+			});
+			alert(person.name);
+			person.name = 'Greg'; // 不会写入属性值,因为这个name设置了只读属性
+			alert(person.name);
+		}
+		function mdyB() {
+			var person = {};
+			Object.defineProperty(person, 'name', {
+				configurable: false,
+				value: 'xiaoli'
+			});
+			alert(person.name);
+			delete person.name;
+			alert(person.name);
+		}
+		function mdyC() {
+			var book = {
+				_year: 2004,
+				edition: 1
+			};
+			Object.defineProperty(book, 'year', {
+				get: function () {
+					return this._year
+				},
+				set: function (newValue) {
+					if (newValue > 2004) {
+						this._year = newValue;
+						this.edition += newValue - 2004
+					}
+				}
+			});
+			book.year = 2005;
+			alert(book.edition);
+			alert(book._year);
+		}
+		function mdyD() {
+			var book = {
+				_year: 2004,
+				edition: 1
+			};
+			book.__defineGetter__('year', function () {
+				return this._year;
+			});
+			book.__defineSetter__('year', function (newValue) {
+				if (newValue > 2004) {
+					this._year = newValue;
+					this.edition += newValue - 2004;
+				}
+			});
+
+			book.year = 2005;
+			alert(book._year);
+		}
+		function mdyE(){
+			var book = {};
+			//定义多个属性
+			Object.defineProperties(book,{
+				_year:{value:2004},
+				edition:{value:1},
+				yrea:{
+					get:function(){
+						return this._year;
+					},
+					set:function(newValue){
+						if(newValue > 2004){
+							this._year = newValue;
+							this.edition += newValue -2004;
+						}
+					}
+				}
+			});
+			//读取属性
+			var descriptor = Object.getOwnPropertyDescriptor(book,'_year');
+			alert(descriptor.value); //2004
+			alert(descriptor.configurable);//false (因为这个属性没有直接在对象上定义，而是通过 defineProperties 函数定义的)
+			alert(typeof descriptor.get);//undefined; 因为_year 属性没有定义 Get,Set函数，所以取默认值，默认值就是 undefined
+		}
+
+		function mdyF(){
+			var book = {};
+			//定义多个属性
+			Object.defineProperties(book,{
+				_year:{value:2004},
+				edition:{value:1},
+				year:{
+					get:function(){
+						return this._year;
+					},
+					set:function(newValue){
+						if(newValue > 2004){
+							this._year = newValue;
+							this.edition += newValue -2004;
+						}
+					}
+				}
+			});
+			var descriptor1 = Object.getOwnPropertyDescriptor(book,'year');
+			alert(descriptor1.value); //undefined
+			alert(descriptor1.enumerable); //false
+			alert(typeof descriptor1.get);//'function'
+		}
+	</script>
+</body>
+
+</html>
