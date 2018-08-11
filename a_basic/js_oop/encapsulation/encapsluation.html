@@ -12,7 +12,7 @@
 	<h1>JavaScript 封装</h1>
 	<p></p>
 	<script>
-		function Cat(name,color){
+		/* function Cat(name,color){
 			this.name=name;
 			this.color=color;
 		}
@@ -27,7 +27,22 @@
 		cat1.eat();
 		for(var prop in cat1) { 
 			console.log(cat1[prop]); 
-			}
+			}*/
+
+		function Person(){
+
+		};
+		Person.prototype.name = 'dawang';
+		Person.prototype.age = 29;
+		Person.prototype.job ='dev';
+		Person.prototype.sayName = function(){
+			alert(this.name);
+		} 
+		var person1 = new Person();
+		person1.sayName();
+		var person2 = new Person();
+		person2.sayName()
+		alert(person1.sayName == person2.sayName);
 	</script>
 </body>
 
