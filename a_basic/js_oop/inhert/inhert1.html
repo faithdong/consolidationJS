@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>彻底搞懂JavaScript中的继承</title>
+</head>
+<body>
+  <h3>一、构造函数，原型属性与实例对象</h3>
+  <p>要搞清楚如何在JavaScript中实现继承，我们首先要搞懂构造函数，原型属性与实例对象三者之间的关系，让我们先看一段代码：</p>
+  <sapn></sapn>
+
+  <script>
+    // Person  构造函数
+    function Person(name,age){
+      var gender = 'girl'; //局部变量 (私有属性)
+      this.name = name; //自有属性
+      this.age = age; //自有属性
+      //this.race = '白人';
+    }
+
+    Person.prototype.race = '黑人'; //原型属性
+    Person.prototype.sayName = function(){
+      document.write(this.name);
+    }
+
+    //kitty 是 实例对象
+    var kitty = new Person('kitty',14);
+    kitty.sayName();
+    console.log(kitty.race);
+  </script>
+</body>
+</html>
