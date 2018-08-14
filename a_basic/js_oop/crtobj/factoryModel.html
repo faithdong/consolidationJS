@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>工厂模式-创建对象</title>
+  <style>
+     /** flex 布局*/
+     ul{
+      display: flex;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+  <h3>1、创建对象---工厂模式</h3>
+  <div>
+      <ul>
+        <li>描述：
+          <figure>
+            <strong>优点：
+              <p>1、消除对象之间的耦合；解决重复实例化的问题，通过使用使用工厂方法而不使用new关键字；</p>
+              <p>2、解决创建\多个相似对象的问题；</p>
+            </strong>
+          </figure>
+        </li>
+        <li>
+          <figure>
+            <strong>缺点：
+              <p>1、没有解决对象识别的问题；（ 不知道怎样知道一个对象的类型 ）</p>
+            </strong>
+          </figure>
+        </li>
+        <fieldset>理解：比如 创建一个动物类，所有动物( dog ，cat ，tiger 等等))都有一个名称，如果不使用工厂模式，那么就需要 new Dog；new Cat;
+            new Tiger； 如果使用工厂模式，只需要调用工厂函数方法就可以了。
+          </fieldset>
+      </ul>
+      <li>注意原型：
+        <figure>
+          <strong>
+            <p>1、在chrome 控制台打印 person1 可以看到 __proto__ ；并没有 constructor </p>
+          </strong>
+        </figure>
+      </li>
+    </div>
+    <script>
+      function createPerson(name,age,job){
+        var o = new Object();
+        o.name = name;
+        o.age = age;
+        o.job = job;
+        o.sayName = function(){
+          alert(this.name);
+        };
+        return o;
+      }
+
+      var person1 = createPerson("dawang",29,"soft Engineer");
+      var person2 = createPerson("laoliu",36,"Doctor");
+      person1.sayName();
+      person2.sayName();
+    </script>
+</body>
+</html>
