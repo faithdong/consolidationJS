@@ -16,7 +16,13 @@
   <h3>创建对象-原型模式</h3>
   <div>
     <ul>
-      <li></li>
+      <li>描述：
+        <figure>
+          <strong>
+            <p>1、原型模式用于定义方法和共享的属性；</p>
+          </strong>
+        </figure>
+      </li>
     </ul>
   </div>
 
@@ -36,7 +42,7 @@
     per1.name = "Greg";
     var per2 = new Person();
     per2.sayName();
-    console.log(per1.sayName == per2.sayName);
+    console.log(per1.sayName == per2.sayName); //true
     console.log(per1.name); //"Greg" —— 来自实例
     console.log(per2.name); //"Nicholas" —— 来自原型
   </script>
