@@ -33,17 +33,17 @@
             <p>1、通过 isPrototypeOf() 方法来确定对象之 间是否存在这种关系
             </p>
             <figure>
-              <p>alert(Person.prototype.isPrototypeOf(person1)); //true</p>
+              <p>console.log(Person.prototype.isPrototypeOf(person1)); //true</p>
             </figure>
             <p>2、ECMAScript 5 增加了一个新方法，叫 Object.getPrototypeOf()</p>
             <figure>
-              <p>alert(Object.getPrototypeOf(person1) == Person.prototype); //true</p>
-              <p>alert(Object.getPrototypeOf(person1).name); //"Nicholas"</p>
+              <p>console.log(Object.getPrototypeOf(person1) == Person.prototype); //true</p>
+              <p>console.log(Object.getPrototypeOf(person1).name); //"Nicholas"</p>
             </figure>
             <p>3、通过 hasOwnProperty('属性名') 判断 是否有此属性 或者 属性是实例属性还是对象属性</p>
             <figure>
-              <p>1、alert(person1.hasOwnProperty("name")); //false 因为在Person对象才有</p>
-              <p>2、alert(Person.hasOwnProperty("name")); //true 因为在Person对象才有</p>
+              <p>1、console.log(person1.hasOwnProperty("name")); //false 因为在Person对象才有</p>
+              <p>2、console.log(Person.hasOwnProperty("name")); //true 因为在Person对象才有</p>
             </figure>
           </strong>
         </figure>
@@ -63,12 +63,12 @@
   </div>
 
   <script>
-    /*     function Person() {}
+        function Person() {}
         Person.prototype.name = "Nicholas";
         Person.prototype.age = 29;
         Person.prototype.job = "Software Engineer";
         Person.prototype.sayName = function () {
-          alert(this.name);
+          console.log(this.name);
         };
         var p1 = new Person();
         var p2 = new Person();
@@ -78,8 +78,8 @@
         console.log(Person.hasOwnProperty("name"));
         console.log(p1.hasOwnProperty("name"));
         console.log('name' in p1);
-        console.log(Object.getOwnPropertyNames(Person.prototype)); */
-    function Person() {};
+        console.log(Object.getOwnPropertyNames(Person.prototype));
+   /*  function Person() { };
     //var friend = new Person();
     Person.prototype = {
       constructor: Person,
@@ -91,9 +91,10 @@
       }
     };
     var friend = new Person();
-    var friend2 = new Person();
-    friend2.sayName();
-    friend.sayName(); //error
+    console.log(friend instanceof Object); //true
+    console.log(friend instanceof Person); //true
+    console.log(friend.constructor == Person); //false
+    console.log(friend.constructor == Object); //true */
   </script>
 </body>
 
