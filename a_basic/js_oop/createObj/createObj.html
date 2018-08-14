@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>创建对象</title>
+  <style>
+    ul {
+      display: flex;
+      flex-flow: wrap;
+    }
+  </style>
+</head>
+
+<body>
+  <h3>1、通过”字面量“方式创建</h3>
+  <div>
+    <ul>
+      <li>定义：
+        <figure>
+          <strong>通过{}创建对象</strong>
+        </figure>
+      </li>
+      <li>代码示例：
+        <figure>
+          <strong>
+            <p>var person = {}</p>
+          </strong>
+        </figure>
+      </li>
+    </ul>
+  </div>
+  <h3>2、通过”构造函数“方式创建</h3>
+  <div>
+    <ul>
+      <li>定义：
+        <figure>
+          <strong>var obj = new 函数名()</strong>
+        </figure>
+      </li>
+      <li>代码示例：
+        <figure>
+          <strong>
+            <p>function Person(){this.name = 'skdlf';this.age=26;this.say:function(){alert('speark')}}</p>
+            <p>var person = new Person()</p>
+            <p>person.say();</p>
+          </strong>
+        </figure>
+      </li>
+    </ul>
+  </div>
+  <h3>3、通过“Object”方式创建</h3>
+  <div>
+    <ul>
+      <li>定义：
+        <figure>
+          <strong>var obj = new Object()</strong>
+        </figure>
+      </li>
+      <li>代码示例：
+        <figure>
+          <strong>
+            <p>var person = new Object();</p>
+            <p>person.name = "sdsds";</p>
+            <p>person.age = 26;</p>
+            <p>person.say = function(){alert('speak');}</p>
+          </strong>
+        </figure>
+      </li>
+    </ul>
+  </div>
+  <h3>4、通过工厂模式创建对象</h3>
+  <h3>5、通过原型模式创建对象</h3>
+  <h3>6、混合模型（构造模式 + 原型模式）</h3>
+  <script>
+
+  </script>
+</body>
+
+</html>

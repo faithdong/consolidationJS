@@ -12,6 +12,20 @@
 	<h1>JavaScript 封装</h1>
 	<p></p>
 	<script>
+
+    console.log('scritp start');
+    setTimeout(function(){
+      console.log('setTimeout');
+    },0);
+    new Promise(function(resolve, reject){
+      console.log('promise0');
+      //resolve();
+    }).then(function(){
+      console.log('promise1');
+    }).then(function(){
+      console.log('promise2');
+    })
+    console.log('script end');
 		/* function Cat(name,color){
 			this.name=name;
 			this.color=color;
