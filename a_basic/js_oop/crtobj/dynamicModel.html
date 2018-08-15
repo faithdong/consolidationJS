@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>动态模式-创建对象</title>
+  <style>
+    ul {
+      display: flxex;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+
+<body>
+  <h3>创建对象-动态模式</h3>
+  <div>
+    <ul>
+      <li>描述：
+        <strong>
+          <p>1、把所有信息都封装到构造函数中；</p>
+          <P>2、通过检测某个属性或者方法是否有效，来决定是否初始化原型；</P>
+          <p>其实就是if 语句判断</p>
+        </strong>
+      </li>
+    </ul>
+  </div>
+  <script>
+    /** 动态原型模式 开始 */
+    function Person(name, age, job) {
+      this.name = name;
+      this.age = age;
+      this.job = job;
+      //检测
+      if (typeof this.sayName != "function") {
+        Person.prototype.sayName = function () {
+          console.log(this.name);
+        }
+      }
+    };
+
+    var friend = new Person("Nicholas", 29, "Software Engineer");
+    friend.sayName();
+    /** 动态原型模式 结束 */
+  </script>
+</body>
+
+</html>

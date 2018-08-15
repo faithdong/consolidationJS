@@ -22,6 +22,16 @@
         <figure>
           <strong>
             <p>1、构造函数模式 + 原型模式；</p>
+            <p>2、构造函数用来定义实例属性；</p>
+            <p>3、原型模式用来定义方法和共享的属性；</p>
+          </strong>
+        </figure>
+      </li>
+      <li>注意：
+        <figure>
+          <strong>
+            <p>1、实例属性都是在构造函数中定义的；</p>
+            <p>2、所有实例共享属性 constructor 和方法则是在原型中定义的；</p>
           </strong>
         </figure>
       </li>
@@ -37,7 +47,7 @@
     }
     //2、定义原型
     Person.prototype = {
-      //constructor: Person,
+      constructor: Person,
       sayName: function () {
         console.log(this.name);
       }

@@ -5,33 +5,32 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>JS 继承</title>
+  <style>
+    a:link{
+      color: blue;
+      text-decoration: none; 
+    }
+    a:active{
+      color:seagreen;
+      text-decoration: none;
+    }
+    a:hover{
+      text-decoration: none;
+      color:#599B49
+    }
+  </style>
 </head>
 <body>
-  <h1>JavaScript 继承的5种方式</h1>
-  <h1>一、构造函数绑定</h1>
-  <p>使用call和apply方法， 将父对象的构造函数绑定到子对象上</p>
-  <script>
-    function Animal(){
-      this.species = '动物';
-    }
+    <h3><a href="./prototypeChainInhert.html">1、原型链</a></h3>
 
-    function Cat(name,color){
-      Animal.apply(this,arguments);
-      this.name = name;
-      this.color = color;
-    }
-    
-    function Dog(name,color){
-      Animal.call(this);
-      this.name = name;
-      this.color = color;
-    }
-    var cat1 = new Cat("大毛","黄色");
-    var dog1 = new Dog('小黑','黑色');
-    console.log(cat1.species);
-    console.log(cat1.name);
-    console.log(dog1.name);
-    console.log(dog1.color);
-  </script>
+    <h3><a href=""></a>1、借用构造函数</h3>
+
+    <h3>2、组合继承</h3>
+  
+    <h3>3、原型继承</h3>
+  
+    <h3>4、寄生式继承</h3>
+  
+    <h3>5、寄生组合式继承</h3>
 </body>
 </html>

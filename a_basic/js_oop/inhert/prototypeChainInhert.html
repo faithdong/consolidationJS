@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>原型链-继承</title>
+  <style>
+    ul{
+      display: flex;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+  <h3>原型链-继承</h3>
+  <div>
+    <ul>
+      <li>描述：
+        <figure>
+          <strong>
+            <p>1、原型链是是实现继承的主要方法；</p>
+            <p>2、让一个引用类型继承另一个引用类型的属性和方法；</p>
+          </strong>
+        </figure>
+      </li>
+    </ul>
+  </div>
+  <script>
+    function SuperType(){
+      this.property = true;
+    }
+    SuperType.prototype.getSuperValue = function(){
+      return this.property;
+    };
+
+    function SubType(){
+      this.subPropery = false;
+    }
+    SubType.prototype = new SuperType();
+    SubType.prototype.getSubValue = function(){
+      return this.subPropery;
+    };
+    var instance = new SubType();
+    console.log(instance.property);
+    console.log(instance.getSuperValue()); 
+  </script>
+</body>
+</html>

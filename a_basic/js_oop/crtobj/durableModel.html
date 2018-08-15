@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>稳妥对象模式-创建对象</title>
+  <style>
+    ul {
+      display: flex;
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+
+<body>
+  <h3>创建对象-稳妥对象模式</h3>
+  <div>
+    <ul>
+      <li>描述：
+        <figure>
+          <strong>
+            <p>1、禁止使用 this 和 new </p>
+          </strong>
+        </figure>
+      </li>
+      <li>与寄生构造函数对比：
+        <figure>
+          <strong>
+            <p>1、新创建的实例方法中不使用 this；（既在工厂方法中不使用this）</p>
+            <p>2、不使用 new 操作符调用构造函数；</p>
+          </strong>
+        </figure>
+      </li>
+    </ul>
+  </div>
+  <script>
+    function Person(name, age, job) {
+      //创建一个对象
+      var o = new Object();
+      //添加方法
+      o.sayName = function () {
+        console.log(name);
+      };
+      //返回对象
+      return o;
+    }
+    var friend = Person("Nicholas", 29, "Software Engineer");
+    friend.sayName(); //"Nicholas"
+  </script>
+</body>
+
+</html>
