@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>原型式-继承</title>
+  <style>
+    ul{
+      display:flex;
+      flex-wrap:wrap;
+    }
+  </style>
+</head>
+<body>
+  <h3>原型式-继承</h3>
+  <div>
+    <ul>
+      <li>描述：
+        <figure>
+          <strong>
+            <p>1、要求必须要有一个对象可以作为另一个对象的基础</p>
+          </strong>
+        </figure>
+      </li>
+    </ul>
+  </div>
+  <script>
+    var person = {
+      name:"Nichols",
+      friends:["Shely","Hebe","linzhiling"],
+      sayName:function(name){
+        console.log(name);
+      }
+    }
+    var anotherPerson = Object.create(person);
+    anotherPerson.name = "Greg";
+    anotherPerson.friends.push("Rob");
+    console.log(person.name);
+    console.log(anotherPerson.name);
+    console.log(person.sayName("ss"));
+
+    var p1 = Object.create(person,{
+      name:{
+        value:"nich"
+      }
+    });
+
+    console.log(person.name);
+    console.log(p1.name);
+  </script>
+</body>
+</html>

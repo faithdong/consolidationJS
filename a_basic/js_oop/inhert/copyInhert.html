@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>拷贝继承</title>
+</head>
+<body>
+  <h3>拷贝继承 （ 浅拷贝 和 深拷贝）</h3>
+  <div>
+    <ul>
+      <li>描述：
+        <figure>
+          <strong>
+            <p>1、拷贝基础类型的数据，就是浅拷贝; jQuery早期使用</p>
+            <p>2、能拷贝基础类型以外还能拷贝 对象和数组，就是深拷贝；jQuery 后期使用</p>
+          </strong>
+        </figure>
+      </li>
+    </ul>
+  </div>
+  <script>
+    
+    var Chinese = {nation:"中国"};
+    var Doctor = {career:"医生"};
+    function object(o){
+      function F(){};
+      F.prototype = o;
+      return new F();
+    }
+
+    var Doctor = object(Chinese);
+    Doctor.career = '医生';
+    console.log(Doctor.nation); //中国
+
+    /** 浅拷贝  开始*/
+    function extendCopy(p){
+      var c = {};
+      for(var i in p){
+        c[i] = p[i];
+      }
+      c.uber = p;
+      return c;
+    }
+
+    var Doctor = extendCopy(Chinese);
+    Doctor.career = "医生";
+    console.log(Doctor.nation);
+
+    Chinese.birthPlaces = ["北京","上海","香港"];
+    var Doctor = extendCopy(Chinese);
+    Doctor.birthPlaces.push("厦门");
+    console.log(Doctor.birthPlaces);
+    console.log(Chinese.birthPlaces);
+    /** 浅拷贝 结束*/
+
+
+  </script>
+</body>
+</html>

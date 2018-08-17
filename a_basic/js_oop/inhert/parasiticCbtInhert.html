@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>组合继承</title>
+  <title>寄生组合式继承</title>
   <style>
     ul {
       display: flex;
@@ -15,43 +15,49 @@
 </head>
 
 <body>
-  <h3>组合继承（ 原型链 + 借用构造函数 ）</h3>
+  <h3>寄生组合式继承</h3>
   <div>
     <ul>
       <li>描述：
         <figure>
           <strong>
-            <p>1、通过原型链实现对原型属性和方法的继承；</p>
-            <p>2、借用构造函数实现对实例属性的继承；</p>
-            <p>既通过在原型上定义方法实现了函数复用，又能保证每个实例都有它的属性；</p>
+            <p>1、通过借用构造函数来继承属性；</p>
+            <p>2、通过原型链的混成形式来继承方法；</p>
           </strong>
         </figure>
       </li>
     </ul>
   </div>
-
   <script>
+    function object(o) {
+      function F() {}
+      F.prototype = o;
+      return new F();
+    }
+
+    function inheritPrototype(subType, superType) {
+      var prototype = object(superType.prototype); //创建对象
+      prototype.constructor = subType; //增强对象
+      subType.prototype = prototype; //指定对象
+    }
+
     function SuperType(name) {
       this.name = name;
       this.colors = ["red", "blue", "green"];
     }
-
     SuperType.prototype.sayName = function () {
       console.log(this.name);
     };
 
-
     function SubType(name, age) {
-      //继承属性
       SuperType.call(this, name);
       this.age = age;
     }
-    //继承方法
-    SubType.prototype = new SuperType();
-    //SubType.prototype.constructor = SubType;
+    inheritPrototype(SubType, SuperType);
     SubType.prototype.sayAge = function () {
       console.log(this.age);
     };
+
     var instance1 = new SubType("Nicholas", 29);
     instance1.colors.push("black");
     console.log(instance1.colors); //"red,blue,green,black"

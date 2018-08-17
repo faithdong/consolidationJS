@@ -22,6 +22,10 @@
             <p>1、在子类型构造函数的内部调用超类型构造函数</p>
             <P>2、通过 call(this,'','') , apply(this,['','']) 方法实现</P>
           </strong>
+          <strong>
+            调用call或者apply时，实际上是将 构造函数作用域对象赋给传递的对象（ 即call(this)对象）；
+            然后执行了构造函数代码块，将属性或方法添加到 此 this 对象；
+          </strong>
         </figure>
       </li>
     </ul>
