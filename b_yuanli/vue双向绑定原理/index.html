@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>双向绑定原理</title>
+</head>
+
+<body>
+  <h1>剖析Vue原理&实现双向绑定MVVM</h1>
+  <div id="app">
+    <h2>{{title}}</h2>
+    <input v-model="name">
+    <h1>{{name}}</h1>
+    <button v-on:click="clickMe">click me!</button>
+  </div>
+</body>
+<script src="observer.js"></script>
+<script src="watcher.js"></script>
+<script src="compile.js"></script>
+<script src="index.js"></script>
+<script type="text/javascript">
+  new SelfVue({
+    el: '#app',
+    data: {
+      title: 'hello world',
+      name: 'canfoo'
+    },
+    methods: {
+      clickMe: function () {
+        this.title = 'hello world';
+      }
+    },
+    mounted: function () {
+      window.setTimeout(() => {
+        this.title = '你好';
+      }, 1000);
+    }
+  });
+</script>
+
+</html>
