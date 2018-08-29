@@ -7,16 +7,41 @@
   <title>实现双向数据绑定</title>
 </head>
 <body>
-  <div id="app">
+  <div id="myapp">
     <h2>{{title}}</h2>
     <input v-model="name">
     <h1>{{name}}</h1>
     <button v-on:click="clickMe">click me!</button>
   </div>
 </body>
+<script src="observer.js"></script>
+<!-- <script src="watcher.js"></script>
+<script src="compile.js"></script> -->
+<script src="mvvm.js"></script>
 <script>
-  new MVVM({
+  var vm = new MVVM({
+        el: '#myapp',
+        data: {
+            someStr: 'hello ',
+            className: 'btn',
+            htmlStr: '<span style="color: #f00;">red</span>',
+            child: {
+                someStr: 'World !'
+            }
+        },
 
-  });
+        computed: {
+            getHelloWord: function() {
+                return this.someStr + this.child.someStr;
+            }
+        },
+
+        methods: {
+            clickBtn: function(e) {
+                var randomStrArr = ['childOne', 'childTwo', 'childThree'];
+                this.child.someStr = randomStrArr[parseInt(Math.random() * 3)];
+            }
+        }
+    });
 </script>
 </html>
